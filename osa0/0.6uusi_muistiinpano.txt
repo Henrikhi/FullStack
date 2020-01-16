@@ -1,0 +1,11 @@
+*käyttäjä kirjoittaa tekstikenttään muistiinpanon nimen, kuten "uusi spa muistiinpano", 
+ja klikkaa nappia "Save".*
+
+*selaimen suorittamassa js-koodissa on tehty tapahtumankäsittelijä, joka reagoi siihen,
+kun lomake koitetaan lähettää. Tällöin js-koodi luo uuden noten ja pushaa sen
+muistiinpanojen listalle, piirtää muistiinpanot uudelleen, ja sen jälkeen lähettää
+muistiinpanon palvelimelle*
+
+selain->palvelin: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note_spa,
+Request Payload: {content: "uusi spa muistiinpano", date: "2020-01-16T09:00:08.445Z"}
+palvelin-->selain: 201 Created

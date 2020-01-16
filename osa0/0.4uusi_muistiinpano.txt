@@ -1,0 +1,23 @@
+*käyttäjä kirjoittaa tekstikenttään muistiinpanon nimen, kuten "uusi muistiinpano", 
+ja klikkaa nappia "Save".*
+
+selain->palvelin: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note,
+Form Data: note: uusi muistiinpano
+palvelin-->selain: 302 redirect Location: /notes
+
+selain->palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/notes
+palvelin-->selain: sivun HTML-koodi
+
+selain->palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.css
+palvelin-->selain: main.css
+
+selain->palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.js
+palvelin-->selain: main.js
+
+*selain alkaa suorittaa js-koodia, joka pyytää JSON-datan palvelimelta*
+
+selain->palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json
+palvelin-->selain: [{"content":"HTML is easy","date":"2019-05-23T17:30:31.098Z"},...,
+{"content":"uusi muistiinpano","date":"2020-01-16T08:38:26.682Z"}]
+
+*selain suorittaa tapahtumankäsittelijän, joka renderöi muistiinpanot näytölle*
